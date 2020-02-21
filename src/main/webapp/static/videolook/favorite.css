@@ -1,0 +1,29 @@
+.box-container {
+  position: relative;
+  transition: all 0.5s;
+}
+.box {
+  position: absolute;
+  background: #DB495B;
+  color: #fff;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  border-radius: 50%;
+  transition: all 0.8s ease-in-out;
+}
+.layer {
+  position: absolute;
+  content: '';
+  display: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 1s;
+  opacity: 0;
+}
+.name {
+  transition: all 0.2s;
+}

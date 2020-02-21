@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.UserMapper">
+    <select id="findDetail" resultType="top.one.jiemo.model.userEntity">
+        select * from user where userName=#{userName};
+    </select>
+    <insert id="addUser" parameterType="java.lang.String">
+        insert into user(userName,passWord,userEmail,userPhone,userState)
+        values(#{userName},#{passWord},#{userEmail},#{userPhone},#{userState});
+    </insert>
+    <select id="findUserFromDb" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(*) FROM user WHERE userName = #{userName};
+    </select>
+    <select id="checkUser" parameterType="top.one.jiemo.model.userEntity" resultType="java.lang.Integer">
+        select count(*) from user where userName=#{userName} and passWord=#{passWord};
+    </select>
+    <update id="updateLoginTime" parameterType="top.one.jiemo.model.userEntity">
+        update user set lastLoginTime=#{lastLoginTime} where userName=#{userName};
+    </update>
+    <select id="findPasswd" parameterType="java.lang.String" resultType="java.lang.String">
+        select passWord from user where userName=#{userName};
+    </select>
+    <update id="updatePassword" parameterType="top.one.jiemo.model.userEntity" >
+        update  user set passWord=#{passWord} where userName=#{userName};
+    </update>
+    <update id="updateEmail" parameterType="top.one.jiemo.model.userEntity">
+        update user set userEmail=#{userEmail} where userName=#{userName};
+    </update>
+    <select id="findEmail" parameterType="java.lang.String" resultType="java.lang.String">
+        select userEmail from user where userName=#{userName};;
+    </select>
+    <select id="findPhone" parameterType="java.lang.String" resultType="java.lang.String">
+        select userPhone from user where userName=#{userName};;
+    </select>
+    <update id="updatePhone" parameterType="top.one.jiemo.model.userEntity">
+        update user set userPhone=#{userPhone} where userName=#{userName};
+    </update>
+    <select id="findPayPassword" parameterType="java.lang.String" resultType="java.lang.String">
+        select userPaypassword from user where userName=#{userName};
+    </select>
+    <update id="updatePayPassword" parameterType="top.one.jiemo.model.userEntity">
+        update user set userPayPassword=#{userPayPassword}  where userName=#{userName};
+    </update>
+    <update id="updateUserPicture" parameterType="top.one.jiemo.model.userEntity">
+        update user set picture=#{picture} where userName=#{userName};
+    </update>
+    <update id="updateUserAddress" parameterType="top.one.jiemo.model.userEntity">
+        update user set userAddress=#{userAddress} where userName=#{userName};
+    </update>
+    <update id="UpdateUserCard" parameterType="top.one.jiemo.model.userEntity">
+        update user set userCard=#{userCard} where userName=#{userName};
+    </update>
+    <update id="updateUserMoney">
+        update user set  userMoney=9999-#{0}  where userName=#{1};
+    </update>
+</mapper>

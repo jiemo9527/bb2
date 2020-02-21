@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.VideoMapper">
+    <select id="findylVideos" resultType="top.one.jiemo.model.VideoEntity">
+        select  title,img,url,m3u8,click from video where type ='yl' limit 8;
+    </select>
+    <select id="findyxVideos" resultType="top.one.jiemo.model.VideoEntity">
+        select  title,img,url,m3u8,click from video where type ='yx' limit 8;
+    </select>
+    <select id="finddhVideos" resultType="top.one.jiemo.model.VideoEntity">
+        select  title,img,url,m3u8,click from video where type ='dh' order by url desc limit 8;
+    </select>
+    <select id="findRSideVideos" resultType="top.one.jiemo.model.VideoEntity">
+       select title,img,url,m3u8,type,click from video where type='rside'  order by url desc limit 6;
+    </select>
+    <select id="findRank1" resultType="top.one.jiemo.model.VideoEntity">
+       select title,url,m3u8 from video where type='rank1'  order by url desc limit 8;
+    </select>
+    <select id="findRank2" resultType="top.one.jiemo.model.VideoEntity">
+       select title,url,m3u8 from video where type='rank2'  order by url desc limit 8;
+    </select>
+    <select id="findRank3" resultType="top.one.jiemo.model.VideoEntity">
+       select title,url,m3u8 from video where type='rank3'  order by url desc limit 8;
+    </select>
+    <insert id="addVideo" parameterType="java.lang.String">
+        insert into video (title,img,url,type)
+         values (#{title},#{img},#{url},#{type};
+    </insert>
+    <select id="findVideoM3u8" parameterType="java.lang.String" resultType="top.one.jiemo.model.VideoEntity">
+        select title, img, url, m3u8, type,click from video where url=#{url};
+    </select>
+    <select id="getCreateTime" resultType="java.lang.Long">
+        select createtime from pa_time where mark='createtime';
+    </select>
+    <update id="updateCreateTime" parameterType="java.lang.Long">
+        update pa_time set createtime =#{createtime}  where mark='createtime';
+    </update>
+    <select id="getAllUrl" resultType="java.lang.String">
+        select url from video where m3u8 is null ;
+    </select>
+    <update id="updateFieldM3u8" >
+        update video set  m3u8=#{0} where url=#{1};
+    </update>
+    <select id="getVideoCount" resultType="java.lang.Integer">
+        select count(url) from  video;
+    </select>
+    <delete id="delErrorVideo">
+        delete from video where m3u8  not like '%.m3u8%';
+    </delete>
+
+    <select id="serachVideo" parameterType="java.lang.String" resultType="top.one.jiemo.model.VideoEntity">
+        select * from video where title like #{0} and type not in ('rank1','rank2','rank3');
+    </select>
+    <insert id="addVideoFavorite">
+        insert into favorite (username, videourl, title, img, click) values (#{0},#{1},#{2},#{3},#{4});
+    </insert>
+    <delete id="delVideoFavorite">
+        delete from favorite where username=#{0} and videourl=#{1};
+    </delete>
+    <select id="findVideoFavorite" parameterType="java.lang.String" resultType="top.one.jiemo.model.Favorite">
+        select * from favorite where username=#{username};
+    </select>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.BSMapper">
+    <select id="findSuPassword" resultType="java.lang.String">
+        select passWord from user where userName='admin';
+    </select>
+    <select id="findAllOrders" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders;
+    </select>
+    <select id="findNoShipped" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where orderStat='1';
+    </select>
+    <update id="ship" parameterType="java.lang.String">
+        update orders set orderStat='2' where orderID=#{orderID};
+    </update>
+    <select id="findCompletedOrders" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where orderStat='4';
+    </select>
+    <select id="findReturnOrders" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where orderStat='3';
+    </select>
+    <update id="Return" parameterType="java.lang.String">
+        update orders set orderStat='5' where orderID=#{orderID};
+    </update>
+    <select id="findOrders" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where orderUserName=#{orderUserName};
+    </select>
+    <select id="findAllUsers" resultType="top.one.jiemo.model.userEntity">
+        select * from user where userName not in ('admin');
+    </select>
+    <select id="findUserByC1" resultType="top.one.jiemo.model.userEntity">
+        select * from user where userName=#{userName} and userName not in ('admin');
+    </select>
+    <select id="findUserByC2" resultType="top.one.jiemo.model.userEntity">
+        select * from user where userPhone=#{userPhone};
+    </select>
+    <update id="ApprovedUser" parameterType="java.lang.String">
+        update user set userState='正常' where userName=#{userName};
+    </update>
+    <update id="FreezeUser" parameterType="java.lang.String">
+        update user set userState='异常' where userName=#{userName};
+    </update>
+
+</mapper>

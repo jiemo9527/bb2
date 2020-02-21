@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.GoodsMapper">
+    <insert id="addgoods" parameterType="java.lang.String">
+        insert into shoppingcar values (#{carID},#{userName},#{shoppingID},#{shoppingName},#{shoppingImg},#{shoppingPrice});
+    </insert>
+    <delete id="delgoods" parameterType="java.lang.String">
+        delete from shoppingcar where carID=#{carID};
+    </delete>
+    <select id="findgoodsFromCar" resultType="top.one.jiemo.model.ShoppingCar">
+        select * from shoppingcar where userName=#{userName};
+    </select>
+
+</mapper>

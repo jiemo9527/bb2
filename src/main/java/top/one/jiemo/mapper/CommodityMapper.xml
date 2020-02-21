@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.CommodityMapper">
+    <select id="findAllCommodity"  resultType="top.one.jiemo.model.commodityEntity">
+        select * from commodity;
+    </select>
+    <select id="findCommodityById" parameterType="java.lang.Integer" resultType="top.one.jiemo.model.commodityEntity">
+        select * from commodity where commodityID=#{commodityID};
+    </select>
+
+</mapper>

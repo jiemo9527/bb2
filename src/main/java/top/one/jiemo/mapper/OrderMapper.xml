@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.one.jiemo.mapper.OrderMapper">
+    <select id="findAllOrders"  resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where OrderUserName=#{OrderUserName};
+    </select>
+    <update id="cancelOrder" parameterType="java.lang.String">
+        update orders set OrderStat='3' where OrderID=#{OrderID};
+    </update>
+    <update id="delOrder" parameterType="java.lang.String">
+        update orders set OrderStat='5' where OrderID=#{OrderID};
+    </update>
+    <select id="findDelOrders" resultType="top.one.jiemo.model.OrderEntity">
+        select * from orders where OrderUserName=#{OrderUserName} and OrderStat='5';
+    </select>
+    <insert id="addOrders" parameterType="java.lang.String">
+        insert into orders (orderID, orderUserName, orderCName,orderPrice,orderStat, orderTime, orderAddr)
+        values (#{orderID},#{orderUserName},#{orderCName},#{orderPrice},#{orderStat},#{orderTime},#{orderAddr});
+    </insert>
+    <select id="findUserPaymoney" resultType="java.lang.Integer">
+        select orderPrice from orders where orderUserName=#{0};
+    </select>
+</mapper>
