@@ -94,7 +94,7 @@ window.onload=function(){
 						src="<%=request.getContextPath()%>/static/User_Data_Update/images/shezhi.png" />
 					<em>资料管理</em> <b></b>
 				</div>
-				<span class="gjszmdm"> <a href="/information.do"
+				<span class="gjszmdm"> <a href="/userInformation.do"
 					class="center_in_self"><font>信息资料</font></a> <a href="/bankCard.do"
 					class="center_in_self"><font>银行卡管理</font></a> <a
 					href="/userAddress.do" class="center_in_self"><font>收货地址管理</font></a>
@@ -144,7 +144,7 @@ window.onload=function(){
 			<form action="${pageContext.request.contextPath}/ue_back.do" method="post">
 				<div class="public_m4">
 					<p>
-						<em>原邮箱账号：</em> <input type="text" name="email"
+						<em>原邮箱账号：</em> <input type="text" name="email" value="${}"
 							style="height: 23px; border: 1px solid #eaeaea; width: 140px">
 					</p>
 

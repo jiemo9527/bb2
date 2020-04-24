@@ -13,7 +13,7 @@ public class testThirdParse {
             String m3u8_url = GetThirdParse.httpGet(
                     "http://www.flvcd.com/parse.php?format=&kw="+url);
             System.out.println(m3u8_url);
-            if (m3u8_url.contains("auth_key")){
+            if (m3u8_url.contains("m3u8")){
                 System.out.println("√");
             }else {
                 System.out.println("×");

@@ -140,7 +140,7 @@ window.onload=function(){
 				<form action="/ubc_back.do" method="post">
 				<p>
 					<em>您当前的银行账号：
-						<div style="color: red">${state}</div></em>
+						<div style="color: red">${userDetail.userCard}</div></em>
 				</p>
 				<p>
 					<em>银行名称：</em> <select
@@ -179,5 +179,6 @@ window.onload=function(){
 			</div>
 			</form>
 		</div>
+
 </body>
 </html>

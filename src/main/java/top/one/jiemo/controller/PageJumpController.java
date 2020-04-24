@@ -52,7 +52,7 @@ public class PageJumpController {
 //        爬:每隔1小时获取一次（视频列表，排行榜列表）；【判断】完成时更新一次时间
             long ctime = System.currentTimeMillis();
             long createtime = videoUpload.getCreateTime();
-            if (ctime - createtime > 60*1000) {
+            if (ctime - createtime > 5*60*1000) {
                 videoUpload.paVideo();
                 ctime = System.currentTimeMillis();
                 videoUpload.updateCreateTime(ctime);

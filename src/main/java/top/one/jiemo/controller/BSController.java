@@ -163,7 +163,7 @@ public class BSController  {
     @RequestMapping("/exitBS")
     public String exitBS(HttpServletRequest request){
         request.getSession().invalidate();
-        return "index";
+        return "forward:index.do";
     }
 
 }

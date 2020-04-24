@@ -9,17 +9,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class HttpProxy {
+
     public String getParse(String urlFromDB) throws Exception {
         // 目标地址
         String targetUrl = "http://www.flvcd.com/parse.php?format=&kw="+urlFromDB;
         // 代理服务器
-        String proxyHost = "58.218.92.69";
-        int proxyPort = 9017;
+        String proxyHost = "58.218.92.167";
+        int proxyPort = 3139;
         // http代理: Proxy.Type.HTTP, socks代理: Proxy.Type.SOCKS
         Proxy.Type proxyType = Proxy.Type.HTTP;
         // 代理验证
@@ -44,7 +44,7 @@ public class HttpProxy {
             // 读取返回数据
             InputStream in= conn.getInputStream();
             m3u8_url=IO2String(in).split("br>���ص�ַ��<a href=\"")[1].split("\" target=\"_blank\" class=\"link\" >")[0];
-            if (m3u8_url.contains("auth_key")){
+            if (m3u8_url.contains(".m3u8")){
                 System.out.print("√");
             }else {
                 System.out.print("×");

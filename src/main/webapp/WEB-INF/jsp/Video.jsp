@@ -344,7 +344,6 @@ html {
 
 <script>
 			function test() {
-				// count++;
 				$.ajax({
 					type:"post",
 					url:"favorite.do",
@@ -471,7 +470,7 @@ html {
 						<a href="javascript:;" class="removeBlock">删除</a>
 						<a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
 						<span class="pull-left date-dz-line">|</span>
-						<a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+						<a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a>
 					</div>
 				</div>
 				<div class="hf-list-con"></div>
