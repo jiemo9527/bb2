@@ -174,7 +174,7 @@ window.onload=function(){
 					<a href="#" class="liji_fsm">发送</a> <i>注：若未绑定手机号码，请前往账户安全页面进行绑定</i>
 				</p>
 					<div style="color: red">${msg}</div>
-<%--				<a href="#" class="public_m3">添加银行卡</a>--%>
+
 				<input type="submit" class="public_m3" value="添加银行卡">
 			</div>
 			</form>
